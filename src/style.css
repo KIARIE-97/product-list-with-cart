@@ -1,0 +1,127 @@
+:root{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  gap: 50px;
+}
+h1{
+  font-size: 2.5rem;
+  color: #333;
+}
+p{
+  font-size: 1.2rem;
+  color: #666;
+}
+button{
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #d51e37;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+button:hover{
+  background-color: #d82c85;
+}
+img{
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.dessert_cards{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.dessert_card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+.dessert_card img{
+  width: 200px;
+  height: 200px;
+}
+.dessert_card h2{
+  font-size: 1.5rem;
+  color: #333;
+}
+.dessert_card p{
+  font-size: 1rem;
+  color: #666;
+}
+.dessert_card .stock
+{
+  font-size: 1rem;
+  background-color: #28a745;
+  border-radius: 5px;
+  color: #fff;
+}
+.dessert_card:hover{
+  transform: scale(1.05);
+}
+.dessert_card button{
+  margin-top: 10px;
+  background-color: #e41414;
+}
+.dessert_card button:hover{
+  background-color: #c00;
+}
+.dessert_card .price{
+  font-size: 1.2rem;
+  color: #333;
+  margin-top: 10px;
+}
+.dessert_card .price span{
+  font-weight: bold;
+}
+.cart{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: start;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.cart_items{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #f8f9fa;
+}
+.total{
+  font-size: 1.5rem;
+  color: #333;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-evenly; */
+  gap: 20px;
+}
+.carbon_neutral p{
+  font-size:12px;
+}
