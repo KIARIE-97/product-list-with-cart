@@ -72,18 +72,44 @@ async function initializeApp () {
 			);
 			// Add the item to the cart
 			const cartItemsContainer = document.querySelector(".cart_items");
-			if (cartItemsContainer) {
-				const itemElement = document.createElement("div");
-				itemElement.className = "item";
-				itemElement.innerHTML = `
+      let itemElement: HTMLDivElement | null = null;
+      if (cartItemsContainer) {
+        itemElement = document.createElement("div");
+        itemElement.className = "item";
+        itemElement.innerHTML = `
         <h3>${name}</h3>
-        <p>Category: ${category}</p>
+        <p> ${category}</p>
         <p class="price">$${price.toFixed(2)}</p>
         
         <button class="remove">Remove</button>
       `;
-				cartItemsContainer.appendChild(itemElement);
-			}
+        cartItemsContainer.appendChild(itemElement);
+      }
+      // Add event listener for the remove button
+      if (itemElement) {
+        const removeButton = itemElement.querySelector('.remove');
+        if (removeButton) {
+          //position the item back to the other desserts
+          removeButton.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent the item click event from firing
+            console.log("Remove button clicked");
+            // Remove the item from the cart
+            itemElement!.remove();
+            // Optionally, update the cart total here
+
+            const totalAmountElement = document.querySelector('.total .amount');
+            if (totalAmountElement) {
+              let totalAmount = 0;
+              document.querySelectorAll('.cart_items .item').forEach(item => {
+                const price = parseFloat(item.querySelector('.price')?.textContent || '0');
+                totalAmount += price;
+              });
+              totalAmountElement.textContent = `$${totalAmount.toFixed(2)}`;
+            }
+          }
+          );
+        }
+      }
 		});
 	});
 }

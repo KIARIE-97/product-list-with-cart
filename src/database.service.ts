@@ -1,4 +1,5 @@
 import type {Product} from './product.interface';
+import data from '../public/data.json'
 
 export class DatabaseService {
 	private db: IDBDatabase | null = null;
@@ -85,7 +86,7 @@ async loadInitialData(): Promise<void> {
         countRequest.onsuccess = async () => {
             if (countRequest.result === 0) {
                 // Only load if store is empty
-                const response = await fetch('../data.json'); // Adjust path as needed
+                const response = await fetch("../public/data.json"); // Adjust path as needed
                 const products = await response.json();
                 const tx = this.db!.transaction([this.STORE_NAME], "readwrite");
                 const storeRW = tx.objectStore(this.STORE_NAME);
