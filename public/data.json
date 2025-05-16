@@ -51,7 +51,7 @@
 	},
 	{
 		"imageUrl": "./assets/images/image-panna-cotta-thumbnail.jpg",
-		"mobileImageUrl": "./assets/images/image-panna-cotta-mobile.jpg",
+		"mobileImageUrl": "./assets/images/panna",
 		"tabletImageUrl": "./assets/images/image-panna-cotta-tablet.jpg",
 		"name": "Vanilla Panna Cotta",
 		"category": "Panna Cotta",

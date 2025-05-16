@@ -72,46 +72,69 @@ async function initializeApp () {
 			);
 			// Add the item to the cart
 			const cartItemsContainer = document.querySelector(".cart_items");
-      let itemElement: HTMLDivElement | null = null;
-      if (cartItemsContainer) {
-        itemElement = document.createElement("div");
-        itemElement.className = "item";
-        itemElement.innerHTML = `
+			let itemElement: HTMLDivElement | null = null;
+			if (cartItemsContainer) {
+				itemElement = document.createElement("div");
+				itemElement.className = "item";
+				itemElement.innerHTML = `
         <h3>${name}</h3>
         <p> ${category}</p>
         <p class="price">$${price.toFixed(2)}</p>
         
         <button class="remove">Remove</button>
       `;
-        cartItemsContainer.appendChild(itemElement);
-      }
-      // Add event listener for the remove button
-      if (itemElement) {
-        const removeButton = itemElement.querySelector('.remove');
-        if (removeButton) {
-          //position the item back to the other desserts
-          removeButton.addEventListener('click', (event) => {
-            event.stopPropagation(); // Prevent the item click event from firing
-            console.log("Remove button clicked");
-            // Remove the item from the cart
-            itemElement!.remove();
-            // Optionally, update the cart total here
+				cartItemsContainer.appendChild(itemElement);
+			}
+			// Add event listener for the remove button
+			if (itemElement) {
+				const removeButton = itemElement.querySelector(".remove");
+				if (removeButton) {
+					//position the item back to the other desserts
+					removeButton.addEventListener("click", (event) => {
+						event.stopPropagation(); // Prevent the item click event from firing
+						console.log("Remove button clicked");
+						// Remove the item from the cart
+						itemElement!.remove();
+						// Optionally, update the cart total here
 
-            const totalAmountElement = document.querySelector('.total .amount');
-            if (totalAmountElement) {
-              let totalAmount = 0;
-              document.querySelectorAll('.cart_items .item').forEach(item => {
-                const price = parseFloat(item.querySelector('.price')?.textContent || '0');
-                totalAmount += price;
-              });
-              totalAmountElement.textContent = `$${totalAmount.toFixed(2)}`;
-            }
-          }
-          );
-        }
-      }
+						const totalAmountElement = document.querySelector(".total .amount");
+						if (totalAmountElement) {
+							let totalAmount = 0;
+							document.querySelectorAll(".cart_items .item").forEach((item) => {
+								const price = parseFloat(
+									item.querySelector(".price")?.textContent || "0"
+								);
+								totalAmount += price;
+							});
+							totalAmountElement.textContent = `$${totalAmount.toFixed(2)}`;
+						}
+					});
+				}
+			}
 		});
 	});
+	// Add event listener for the checkout button
+	document.querySelector(".checkout")?.addEventListener("click", () => {
+		const cartItems = document.querySelectorAll(".cart_items .item");
+		if (cartItems.length === 0) {
+			alert("Your cart is empty!");
+			return;
+		}
+
+		let totalAmount = 0;
+		cartItems.forEach((item) => {
+			const price = parseFloat(
+				item.querySelector(".price")?.textContent || "0"
+			);
+			totalAmount += price;
+		});
+
+		alert(`Order confirmed! Total amount: $${totalAmount.toFixed(2)}`);
+   
+
+	});
+  // Update the total amount display
+
 }
 // Start the application
 initializeApp().catch(console.error);
@@ -130,23 +153,7 @@ document.querySelectorAll('.dessert_card').forEach(card => {
   });
 });
 
-// Add event listener for the checkout button
-document.querySelector('.checkout')?.addEventListener('click', () => {
-  const cartItems = document.querySelectorAll('.cart_items .item');
-  if (cartItems.length === 0) {
-    alert('Your cart is empty!');
-    return;
-  }
 
-  let totalAmount = 0;
-  cartItems.forEach(item => {
-    const price = parseFloat(item.querySelector('.price')?.textContent || '0');
-    totalAmount += price;
-  });
-
-  alert(`Order confirmed! Total amount: $${totalAmount.toFixed(2)}`);
-}
-);
 
 // Add event listener for the "Add to Cart" buttons
 document.querySelectorAll(".dessert_card button").forEach((button) => {
