@@ -1,5 +1,5 @@
 import type {Product} from './product.interface';
-import data from '../public/data.json'
+
 
 export class DatabaseService {
 	private db: IDBDatabase | null = null;
