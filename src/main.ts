@@ -133,13 +133,34 @@ async function initializeApp () {
 
 		let totalAmount = 0;
 		cartItems.forEach((item) => {
-			const price = parseFloat(
-				item.querySelector(".price")?.textContent || "0"
-			);
+			const priceText = item.querySelector(".price")?.textContent || "0";
+			const price = parseFloat(priceText.replace("$", ""));
 			totalAmount += price;
 		});
+		// display the total amount and item name in a modal
+		const itemNames = Array.from(cartItems)
+			.map((item) => item.querySelector("h3")?.textContent || "")
+			.join(", ");
+		alert(`Order confirmed! Total amount: $${totalAmount.toFixed(2)}\nYour desserts: ${itemNames}`);
 
-		alert(`Order confirmed! Total amount: $${totalAmount.toFixed(2)}`);
+		// Optionally, you can clear the cart after confirmation
+		document.querySelector(".cart_items")!.innerHTML = ""; // Clear cart items
+		document.querySelector(".total .amount")!.textContent = "$0.00"; // Reset total amount
+		// reset the stock numbers in the dessert cards
+		document.querySelectorAll('.dessert_card .stock').forEach(stockElement => {
+			(stockElement as HTMLElement).textContent = '1'; // Reset stock to 1
+		}
+		);
+
+		//reset the Add to Cart buttons
+		document.querySelectorAll('.dessert_card .addItem').forEach(addItemDiv => {
+			(addItemDiv as HTMLElement).classList.remove('hidden'); // Show Add to Cart buttons
+		});
+		document.querySelectorAll('.dessert_card .stock_section').forEach(stockSection => {
+			(stockSection as HTMLElement).classList.add('hidden'); // Hide stock controls
+		});
+
+		// alert(`Order confirmed! Total amount: $${totalAmount.toFixed(2)}`);
    
 
 	});
