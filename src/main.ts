@@ -48,7 +48,7 @@ async function initializeApp () {
                 ${cardsHtml}
             </div>
             <div class="cart">
-            <h2>Your Cart (<!-- Quantity -->)</h2>
+            <h2>Your Cart</h2>
                 
                 Your added items will appear here
                 <div class="cart_items"></div>

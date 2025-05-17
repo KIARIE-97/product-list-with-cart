@@ -6,9 +6,6 @@
 .container{
   display: flex;
   flex-direction: row;
-  /* align-items: center;
-  justify-content: center; */
-  /* height: 100vh; */
   background-color: #f0f0f0;
   gap: 50px;
 }
@@ -54,7 +51,7 @@ img{
   background-color: #f8f9fa;
   border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 20px;
+  /* padding: 20px; */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
 }
@@ -127,4 +124,113 @@ img{
 }
 .hidden {
   display: none !important;
+}
+.subsection1{
+  display: flex;
+flex-direction: column;
+ position: relative;
+  align-items: center;
+  justify-content: center;
+}
+.stock_section,
+.addItem {
+  position: absolute;
+  left: 50%;
+  top: 80%;
+  transform: translateX(-50%);
+  /* z-index: 2; */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 75%;
+  height: 30%;
+}
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .dessert_cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dessert_card img {
+    width: 150px;
+    height: 150px;
+  }
+  .cart {
+    width: 100%;
+    padding: 10px;
+  }
+  .stock_section,
+.addItem {
+    width: 90%;
+    top: 85%;
+  }
+}
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+  }
+  .dessert_cards {
+    grid-template-columns: 1fr;
+  }
+  .dessert_card img {
+    width: 100px;
+    height: 100px;
+  }
+  .dessert_card h2 {
+    font-size: 1.2rem;
+  }
+  .dessert_card p {
+    font-size: 0.9rem;
+  }
+  .cart {
+    width: 100%;
+    padding: 5px;
+  }
+  .subsection1{
+    margin: 20px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+  }
+  img{
+    width: 100%;
+    height: 100%;
+  }
+  .dessert_card button {
+    width: 100%;
+    padding: 10px;
+  }
+}
+@media (max-width: 320px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+  }
+  .dessert_card img {
+    width: 80px;
+    height: 80px;
+  }
+  .dessert_card h2 {
+    font-size: 1rem;
+  }
+  .dessert_card p {
+    font-size: 0.8rem;
+  }
+  .cart {
+    width: 100%;
+    padding: 5px;
+  }
 }
