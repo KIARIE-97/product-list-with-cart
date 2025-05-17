@@ -6,9 +6,9 @@
 .container{
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  /* align-items: center;
+  justify-content: center; */
+  /* height: 100vh; */
   background-color: #f0f0f0;
   gap: 50px;
 }

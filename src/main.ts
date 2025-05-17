@@ -14,8 +14,9 @@ async function initializeApp () {
 	const cardsHtml = products
 		.map(
 			(product) => `
+      
       <div class="dessert_card" data-id="${product.id}">
- <div class="subsection1">
+      <div class="subsection1">
       <img src="${product.imageUrl}" alt="${product.name}" />
        <p class="stock">${product.stock}</p>
             <button>Add to Cart</button>
@@ -27,14 +28,16 @@ async function initializeApp () {
             </div>
            
         </div>
+       
     `
 		)
 		.join("");
 
 	document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
+  <div>
+  <h1>Desserts</h1>
         <div class="container">
         <div class="dessert_cards">
-        <h1>Desserts</h1>
                 ${cardsHtml}
             </div>
             <div class="cart">
@@ -53,6 +56,7 @@ async function initializeApp () {
                     <button class="checkout">Confirm Order</button>
                 </div>
             </div>
+        </div>
         </div>
         </div>
     `;
