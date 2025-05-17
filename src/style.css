@@ -125,3 +125,6 @@ img{
 .carbon_neutral p{
   font-size:12px;
 }
+.hidden {
+  display: none !important;
+}
